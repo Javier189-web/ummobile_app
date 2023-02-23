@@ -286,14 +286,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  flutter_config:
-    dependency: "direct dev"
-    description:
-      name: flutter_config
-      sha256: "8e2be2d560a52e06d2ef53a31913a11fc80ef708a442571c96194fd32e29fb1a"
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.0.0"
   flutter_custom_tabs:
     dependency: "direct main"
     description:
@@ -829,6 +821,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.2.1"
+  responsive_builder:
+    dependency: "direct main"
+    description:
+      name: responsive_builder
+      sha256: "824fa4a5822096a3c70804652b85e856d04099cb4f637e99fbee468db08e7177"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.6.0"
   shared_preferences:
     dependency: transitive
     description:

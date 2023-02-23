@@ -1,6 +1,7 @@
 /*import 'package:device_preview/device_preview.dart';
 import 'package:flutter/foundation.dart';*/
-import 'package:flutter_config/flutter_config.dart';
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
@@ -22,7 +23,6 @@ AppSettings? _appSettings;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await FlutterConfig.loadEnvVariables();
   await Hive.initFlutter();
   await FlutterTranslations.initialize();
   RegisterHiveAdapters();
@@ -49,17 +49,20 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
-    initializeOneSignal();
-    handleOneSignalEvents(
-      onReceive: (notification) {
-        bool notificationsControllerExist =
-            Get.isRegistered<NotificationsController>();
+    if (!kIsWeb) {
+      initializeOneSignal();
+      handleOneSignalEvents(
+        onReceive: (notification) {
+          bool notificationsControllerExist =
+              Get.isRegistered<NotificationsController>();
 
-        if (notificationsControllerExist) {
-          Get.find<NotificationsController>().add(notification.notificationId);
-        }
-      },
-    );
+          if (notificationsControllerExist) {
+            Get.find<NotificationsController>()
+                .add(notification.notificationId);
+          }
+        },
+      );
+    }
   }
 
   @override

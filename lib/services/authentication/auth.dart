@@ -28,7 +28,7 @@ Future<oauth2.Client?> loginAuthorization(String user, String password) async {
 
 /// Obtains credentials based on the [username] and [password].
 Future<oauth2.Credentials?> login(String username, String password) async {
-  late String messageError;
+  String messageError = "";
   oauth2.Client? client;
 
   try {
@@ -60,7 +60,7 @@ Future<oauth2.Credentials?> login(String username, String password) async {
       });
     }
   } catch (e) {
-    print("Something bad happened");
+    print("Something bad happened: $e");
   }
 
   if (client != null) {
